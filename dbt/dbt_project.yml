@@ -1,0 +1,19 @@
+name: "global_growth_risk_lab"
+version: "1.0.0"
+config-version: 2
+
+profile: "global_growth_risk_lab"
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+models:
+  global_growth_risk_lab:
+    +materialized: view
+    staging:
+      +schema: stg
+    intermediate:
+      +schema: int
+    marts:
+      +schema: mart
