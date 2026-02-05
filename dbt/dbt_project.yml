@@ -11,9 +11,3 @@ macro-paths: ["macros"]
 models:
   global_growth_risk_lab:
     +materialized: view
-    staging:
-      +schema: stg
-    intermediate:
-      +schema: int
-    marts:
-      +schema: mart

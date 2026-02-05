@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: wb_raw
+    description: "World Bank raw tables ingested via Python (one-shot)."
+    schema: "wb_raw" # BigQuery Dataset (wb_raw)
+    tables:
+      - name: raw_country_dim
+        description: "Country dimension (excluding aggregates)."
+      - name: raw_wb_indicators_long
+        description: "WDI indicators in long format (country-year-indicator)."
