@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: int_country_year_wide
+    description: "Pivot of WDI indicators to one row per country-year (wide format)."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - country_code
+            - year
+    columns:
+      - name: country_code
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_country')
+              field: country_code
+
+      - name: year
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 2020"
+
+  - name: int_country_year_features
+    description: "Wide country-year dataset with lag and delta features (core 7)."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - country_code
+            - year
+    columns:
+      - name: country_code
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_country')
+              field: country_code
+
+      - name: year
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 2020"

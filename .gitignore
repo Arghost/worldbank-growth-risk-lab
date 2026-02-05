@@ -208,6 +208,26 @@ __marimo__/
 
 # Secrets / credentials
 *.json
+!dbt/packages.yml
 .gcp/
 .env
 .env.*
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+dbt/dbt_modules/
+dbt/.user.yml
+dbt/profiles.yml
+
+# Tableau
+tableau/*.twb
+tableau/*.twbx
+*.hyper
+
+# Data files
+*.csv
+*.parquet
+*.xlsx
+!docs/*.csv
