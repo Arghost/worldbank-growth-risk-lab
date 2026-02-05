@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: mart_targets
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [country_code, year]
+    columns:
+      - name: country_code
+        tests: [not_null]
+      - name: year
+        tests: [not_null]
+      - name: target_gdp_pc_growth_next_year
+        tests: [not_null]
+
+  - name: mart_risk_scores
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [country_code, year]
+    columns:
+      - name: country_code
+        tests: [not_null]
+      - name: year
+        tests: [not_null]
+      - name: risk_overall_score
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0 and risk_overall_score <= 100"
